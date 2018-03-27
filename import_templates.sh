@@ -44,3 +44,23 @@ for resource in amq/amq62-image-stream.json \
 do
   oc replace -n openshift --force -f https://raw.githubusercontent.com/jboss-openshift/application-templates/master/$resource
 done
+
+# eap71 for comparision
+for resource in eap71-amq-persistent-s2i.json \
+  eap71-amq-s2i.json \
+  eap71-basic-s2i.json \
+  eap71-https-s2i.json \
+  eap71-image-stream.json \
+  eap71-mongodb-persistent-s2i.json \
+  eap71-mongodb-s2i.json \
+  eap71-mysql-persistent-s2i.json \
+  eap71-mysql-s2i.json \
+  eap71-postgresql-persistent-s2i.json \
+  eap71-postgresql-s2i.json \
+  eap71-sso-s2i.json \
+  eap71-third-party-db-s2i.json \
+  eap71-tx-recovery-s2i.json
+do
+  oc replace -n openshift --force -f https://raw.githubusercontent.com/jboss-openshift/application-templates/master/eap/$resource
+done
+
