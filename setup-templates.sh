@@ -25,12 +25,7 @@ docker login -u developer -p $AUTH $CLUSTER_IP:$PORT
 #jboss-eap-7-tech-preview/eap-cd-openshift:12.0
 docker tag $LPREFIX/$LNAME:$VERSION $CLUSTER_IP:$PORT/$PREFIX/$NAME:$VERSION
 docker tag $LPREFIX/$LNAME:$VERSION $CLUSTER_IP:$PORT/$PREFIX/$NAME:$VERSION_TAG
+docker tag $LPREFIX/$LNAME:$VERSION $CLUSTER_IP:$PORT/$PREFIX/$NAME:latest
 docker push $CLUSTER_IP:$PORT/$PREFIX/$NAME:$VERSION
 docker push $CLUSTER_IP:$PORT/$PREFIX/$NAME:$VERSION_TAG
-
-# testsuite uses the docker img - doesnt, not needed?
-#docker tag jboss-eap-7/eap-cd:latest $CLUSTER_IP:$PORT/$PREFIX/$NAME:$VERSION
-#docker tag jboss-eap-7/eap-cd:latest $CLUSTER_IP:$PORT/$PREFIX/$NAME:$VERSION_TAG
-#docker push $CLUSTER_IP:5000/openshift/eap-cd:12
-#docker push $CLUSTER_IP:5000/openshift/eap-cd:12.0
-
+docker push $CLUSTER_IP:$PORT/$PREFIX/$NAME:latest
