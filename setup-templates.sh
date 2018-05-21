@@ -3,8 +3,8 @@ LPREFIX=jboss-eap-7-tech-preview
 LNAME=eap-cd-openshift
 PREFIX=openshift
 NAME=eap-cd-openshift
-VERSION="12.0"
-VERSION_TAG="12"
+VERSION="13.0"
+VERSION_TAG="13"
 PORT=5000
 
 oc cluster up # start cluster
@@ -19,10 +19,10 @@ oc create -n myproject -f https://raw.githubusercontent.com/luck3y/application-t
 sleep 5
 AUTH=`oc whoami -t`
 CLUSTER_IP=`oc get -n default svc/docker-registry -o=yaml | grep clusterIP  | awk -F: '{print $2}'`
-docker tag $LPREFIX/$LNAME:latest $LPREFIX/$LNAME:12.0
+docker tag $LPREFIX/$LNAME:latest $LPREFIX/$LNAME:$VERSION
 
 docker login -u developer -p $AUTH $CLUSTER_IP:$PORT
-#jboss-eap-7-tech-preview/eap-cd-openshift:12.0
+#jboss-eap-7-tech-preview/eap-cd-openshift:$VERSION
 docker tag $LPREFIX/$LNAME:$VERSION $CLUSTER_IP:$PORT/$PREFIX/$NAME:$VERSION
 docker tag $LPREFIX/$LNAME:$VERSION $CLUSTER_IP:$PORT/$PREFIX/$NAME:$VERSION_TAG
 docker tag $LPREFIX/$LNAME:$VERSION $CLUSTER_IP:$PORT/$PREFIX/$NAME:latest

@@ -64,3 +64,19 @@ do
   oc replace -n openshift --force -f https://raw.githubusercontent.com/jboss-openshift/application-templates/master/eap/$resource
 done
 
+for resource in amq63-basic.json \
+ amq63-persistent-ssl.json \
+ amq63-persistent.json \
+ amq63-ssl.json 
+do
+  oc replace -n openshift --force -f https://raw.githubusercontent.com/luck3y/application-templates/master/amq/$resource
+done
+
+# AMQ7 - this expects a local docker image amq-broker-7/amq-broker71-openshift:latest
+oc replace -n openshift --force -f https://raw.githubusercontent.com/jboss-container-images/jboss-amq-7-broker-openshift-image/amq71-dev/amq-7-image-streams.yaml
+for resource in amq-broker-71-basic.yaml \
+ amq-broker-71-configmap.yaml
+do
+oc replace -n openshift --force -f https://raw.githubusercontent.com/jboss-container-images/jboss-amq-7-broker-openshift-image/amq71-dev/templates/$resource
+done
+
