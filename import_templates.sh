@@ -82,7 +82,7 @@ do
 done
 
 #AMQ7
-oc replace -n openshift --force -f https://raw.githubusercontent.com/jboss-container-images/jboss-amq-7-broker-openshift-image/amq71-dev/amq-7-image-streams.yaml
+oc replace -n openshift --force -f https://raw.githubusercontent.com/jboss-container-images/jboss-amq-7-broker-openshift-image/amq-broker-71/amq-broker-7-image-streams.yaml
 
 for resource in amq-broker-71-basic.yaml \
  amq-broker-71-configmap.yaml
