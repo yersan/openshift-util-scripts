@@ -3,6 +3,7 @@
 # import templates 
 
 for resource in eap-cd-amq-persistent-s2i.json \
+  eap-cd-starter-s2i.json \
   eap-cd-amq-s2i.json \
   eap-cd-basic-s2i.json \
   eap-cd-https-s2i.json \
