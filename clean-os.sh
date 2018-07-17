@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# quick, hacky cleanup of everything in OS
+# (currently doesn't delete persistent vols)
+
 for i in pods dc builds bc services routes
 do
  echo $i

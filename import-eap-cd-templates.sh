@@ -1,4 +1,8 @@
-for resource in eap-cd-amq-persistent-s2i.json \
+TEMPLATE_SRC=https://raw.githubusercontent.com/jboss-container-images/jboss-eap-7-openshift-image/eap-cd/templates/
+
+for resource in \
+  eap-cd-image-stream.json \
+  eap-cd-amq-persistent-s2i.json \
   eap-cd-amq-s2i.json \
   eap-cd-basic-s2i.json \
   eap-cd-https-s2i.json \
@@ -8,10 +12,9 @@ for resource in eap-cd-amq-persistent-s2i.json \
   eap-cd-mysql-s2i.json \
   eap-cd-postgresql-persistent-s2i.json \
   eap-cd-postgresql-s2i.json \
-  eap-cd-sso-s2i.json \
   eap-cd-third-party-db-s2i.json \
-  eap-cd-tx-recovery-s2i.json     
+  eap-cd-tx-recovery-s2i.json \
+  eap-cd-sso-s2i.json
 do
-  oc replace -n openshift --force -f https://raw.githubusercontent.com/luck3y/jboss-eap-7-openshift-image/eap-cd13/templates/${resource}
+ oc replace --force -f ${TEMPLATE_SRC}/${resource}
 done
-
