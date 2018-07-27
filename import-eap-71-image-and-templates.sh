@@ -1,7 +1,7 @@
 #!/bin/bash -x
 LPREFIX=jboss-eap-7
 LNAME=eap71-openshift
-PREFIX=openshift
+NAMESPACE=openshift
 NAME=jboss-eap71-openshift
 VERSION="1.4"
 PORT=5000
@@ -22,8 +22,8 @@ CLUSTER_IP=`oc get -n default svc/docker-registry -o=yaml | grep clusterIP  | aw
 
 docker login -u developer -p $AUTH $CLUSTER_IP:$PORT
 
-docker tag $LPREFIX/$LNAME:$VERSION $CLUSTER_IP:$PORT/$PREFIX/$NAME:$VERSION
-docker push $CLUSTER_IP:$PORT/$PREFIX/$NAME:$VERSION
+docker tag $LPREFIX/$LNAME:$VERSION $CLUSTER_IP:$PORT/${NAMESPACE}/$NAME:$VERSION
+docker push $CLUSTER_IP:$PORT/${NAMESPACE}/$NAME:$VERSION
 
 for resource in eap71-amq-persistent-s2i.json \
   eap71-amq-s2i.json \

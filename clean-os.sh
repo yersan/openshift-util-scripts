@@ -2,6 +2,7 @@
 
 # quick, hacky cleanup of everything in OS
 # (currently doesn't delete persistent vols)
+# note this uses the current default project 
 
 for i in pods dc builds bc services routes
 do

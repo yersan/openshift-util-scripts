@@ -1,4 +1,5 @@
 TEMPLATE_SRC=https://raw.githubusercontent.com/jboss-container-images/jboss-eap-7-openshift-image/eap-cd/templates/
+NAMESPACE=openshift
 
 for resource in \
   eap-cd-image-stream.json \
@@ -16,5 +17,5 @@ for resource in \
   eap-cd-tx-recovery-s2i.json \
   eap-cd-sso-s2i.json
 do
- oc replace --force -f ${TEMPLATE_SRC}/${resource}
+ oc replace -n ${NAMESPACE} --force -f ${TEMPLATE_SRC}/${resource}
 done
