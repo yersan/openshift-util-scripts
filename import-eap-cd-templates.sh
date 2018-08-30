@@ -1,8 +1,7 @@
-TEMPLATE_SRC=https://raw.githubusercontent.com/jboss-container-images/jboss-eap-7-openshift-image/eap-cd/templates/
+TEMPLATE_SRC=https://raw.githubusercontent.com/jboss-container-images/jboss-eap-7-openshift-image/eap-cd-dev/templates/
 NAMESPACE=openshift
 
 for resource in \
-  eap-cd-image-stream.json \
   eap-cd-amq-persistent-s2i.json \
   eap-cd-amq-s2i.json \
   eap-cd-basic-s2i.json \

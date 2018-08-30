@@ -7,12 +7,12 @@ VERSION="14.0"
 VERSION_TAG="14"
 PORT=5000
 
-TEMPLATE_SRC=https://raw.githubusercontent.com/jboss-container-images/jboss-eap-7-openshift-image/eap-cd/templates/
+TEMPLATE_SRC=https://raw.githubusercontent.com/jboss-container-images/jboss-eap-7-openshift-image/eap-cd-dev/templates/
 
 oc login -u developer
 
 # import the EAP CD imagestream
-oc replace --force -n ${NAMESPACE} -f ${TEMPLATE_SRC}/eap-cd-image-stream.json
+curl ${TEMPLATE_SRC}/eap-cd-image-stream.json | sed 's|registry.access.redhat.com/jboss-eap-7-tech-preview|openshift|g' | oc replace --force -n ${NAMESPACE} -f -
 
 # create the default secrets
 oc replace --force -n myproject -f https://raw.githubusercontent.com/jboss-openshift/application-templates/master/secrets/eap-app-secret.json
