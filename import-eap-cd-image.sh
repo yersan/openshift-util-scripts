@@ -3,8 +3,8 @@ LPREFIX=jboss-eap-7-tech-preview
 LNAME=eap-cd-openshift
 NAMESPACE=openshift
 NAME=eap-cd-openshift
-VERSION="13.0"
-VERSION_TAG="13"
+VERSION="14.0"
+VERSION_TAG="14"
 PORT=5000
 
 TEMPLATE_SRC=https://raw.githubusercontent.com/jboss-container-images/jboss-eap-7-openshift-image/eap-cd/templates/
