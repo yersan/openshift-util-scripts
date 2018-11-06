@@ -17,9 +17,6 @@ oc adm policy add-scc-to-user privileged -n default -z prometheus-operator
 oc adm policy add-scc-to-user privileged -n default -z prometheus
 
 for i in bundle.yaml \
-  example/user-guides/getting-started/example-app-deployment.yaml \
-  example/user-guides/getting-started/example-app-service.yaml \
-  example/user-guides/getting-started/example-app-service-monitor.yaml \
   example/rbac/prometheus/prometheus-service-account.yaml \
   example/rbac/prometheus/prometheus-cluster-role.yaml \
   example/rbac/prometheus/prometheus-cluster-role-binding.yaml \
@@ -32,6 +29,6 @@ done
 
 #install the route
 
-oc create route edge -n default --service=prometheus --port 9090
+oc create route edge -n default --service=prometheus
 
 # prometheus console should now be available at https://prometheus-default.127.0.0.1.nip.io
