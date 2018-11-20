@@ -4,7 +4,7 @@
 # (currently doesn't delete persistent vols)
 # note this uses the current default project 
 
-for i in pods dc builds bc services routes
+for i in pods dc builds bc services routes pvc
 do
  echo $i
  oc get $i | grep -v NAME | awk '{print $1}'  | xargs oc delete $i

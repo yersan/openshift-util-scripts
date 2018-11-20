@@ -32,3 +32,4 @@ done
 oc create route edge -n default --service=prometheus
 
 # prometheus console should now be available at https://prometheus-default.127.0.0.1.nip.io
+

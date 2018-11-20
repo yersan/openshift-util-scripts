@@ -24,7 +24,9 @@ CLUSTER_IP=`oc get -n default svc/docker-registry -o=yaml | grep clusterIP  | aw
 docker login -u developer -p $AUTH $CLUSTER_IP:$PORT
 
 docker tag $LPREFIX/$LNAME:$VERSION $CLUSTER_IP:$PORT/${NAMESPACE}/$NAME:$VERSION
+docker tag $LPREFIX/$LNAME:$VERSION $CLUSTER_IP:$PORT/${NAMESPACE}/$NAME:latest
 docker push $CLUSTER_IP:$PORT/${NAMESPACE}/$NAME:$VERSION
+docker push $CLUSTER_IP:$PORT/${NAMESPACE}/$NAME:latest
 
 for resource in eap71-amq-persistent-s2i.json \
   eap71-amq-s2i.json \

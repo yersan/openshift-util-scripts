@@ -11,4 +11,5 @@ chmod +x busybox
 
 curl -L ${DIG_URL} > dig.tgz
 tar -zxvf dig.tgz
+./dig eap-cl-1-ping.myproject.svc.cluster.local
 

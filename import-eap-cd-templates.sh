@@ -1,4 +1,6 @@
-TEMPLATE_SRC=https://raw.githubusercontent.com/jboss-container-images/jboss-eap-7-openshift-image/eap-cd-dev/templates/
+#TEMPLATE_SRC=https://raw.githubusercontent.com/jboss-container-images/jboss-eap-7-openshift-image/eap-cd-dev/templates/
+#TEMPLATE_SRC=https://raw.githubusercontent.com/jboss-container-images/jboss-eap-7-openshift-image/eap-cd/templates/
+TEMPLATE_SRC=/home/kwills/os/git/jboss-eap-7-openshift-image/templates
 NAMESPACE=openshift
 
 for resource in \

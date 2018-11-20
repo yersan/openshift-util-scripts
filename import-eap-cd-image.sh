@@ -1,5 +1,5 @@
 #!/bin/bash -x
-LPREFIX=jboss-eap-7-tech-preview
+LPREFIX=jboss-eap-7
 LNAME=eap-cd-openshift
 NAMESPACE=openshift
 NAME=eap-cd-openshift
@@ -12,7 +12,7 @@ TEMPLATE_SRC=https://raw.githubusercontent.com/jboss-container-images/jboss-eap-
 oc login -u developer
 
 # import the EAP CD imagestream
-curl ${TEMPLATE_SRC}/eap-cd-image-stream.json | sed 's|registry.access.redhat.com/jboss-eap-7-tech-preview|openshift|g' | oc replace --force -n ${NAMESPACE} -f -
+curl ${TEMPLATE_SRC}/eap-cd-image-stream.json | sed 's|registry.access.redhat.com/jboss-eap-7-tech-preview|openshift|g' | sed 's|registry.redhat.io/jboss-eap-7-tech-preview|openshift|g' | oc replace --force -n ${NAMESPACE} -f -
 
 # create the default secrets
 oc replace --force -n myproject -f https://raw.githubusercontent.com/jboss-openshift/application-templates/master/secrets/eap-app-secret.json
