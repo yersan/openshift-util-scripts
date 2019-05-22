@@ -1,23 +1,23 @@
 #!/bin/bash -x
-LPREFIX=jboss-eap-7
+LPREFIX=jboss-eap-7-tech-preview
 LNAME=eap-cd-openshift
 NAMESPACE=openshift
-NAME=eap-cd-openshift
-VERSION="14.0"
-VERSION_TAG="14"
+NAME=jboss-eap-7-tech-preview
+VERSION="17.0"
+VERSION_TAG="17"
 PORT=5000
 
-TEMPLATE_SRC=https://raw.githubusercontent.com/jboss-container-images/jboss-eap-7-openshift-image/eap-cd-dev/templates/
+#TEMPLATE_SRC=https://raw.githubusercontent.com/jboss-container-images/jboss-eap-7-openshift-image/eap-cd-dev/templates/
 
 oc login -u developer
 
 # import the EAP CD imagestream
-curl ${TEMPLATE_SRC}/eap-cd-image-stream.json | sed 's|registry.access.redhat.com/jboss-eap-7-tech-preview|openshift|g' | sed 's|registry.redhat.io/jboss-eap-7-tech-preview|openshift|g' | oc replace --force -n ${NAMESPACE} -f -
+#curl ${TEMPLATE_SRC}/eap-cd-image-stream.json | sed 's|registry.access.redhat.com/jboss-eap-7-tech-preview|openshift|g' | sed 's|registry.redhat.io/jboss-eap-7-tech-preview|openshift|g' | oc replace --force -n ${NAMESPACE} -f -
 
 # create the default secrets
-oc replace --force -n myproject -f https://raw.githubusercontent.com/jboss-openshift/application-templates/master/secrets/eap-app-secret.json
-oc replace --force -n myproject -f https://raw.githubusercontent.com/jboss-openshift/application-templates/master/secrets/eap7-app-secret.json
-oc replace --force -n myproject -f https://raw.githubusercontent.com/jboss-openshift/application-templates/master/secrets/sso-app-secret.json
+#oc replace --force -n myproject -f https://raw.githubusercontent.com/jboss-openshift/application-templates/master/secrets/eap-app-secret.json
+#oc replace --force -n myproject -f https://raw.githubusercontent.com/jboss-openshift/application-templates/master/secrets/eap7-app-secret.json
+#oc replace --force -n myproject -f https://raw.githubusercontent.com/jboss-openshift/application-templates/master/secrets/sso-app-secret.json
 
 # OCP seems to need a sleep here before we push to the docker registry
 # for this to work you should have an appropriate image built in your local

@@ -8,7 +8,7 @@ oc cluster up
 oc login -u system:admin
 
 # give the developer user cluster-admin so we can import images
-oc adm policy add-cluster-role-to-user cluster-admin developer
+oc adm policy add-cluster-role-to-user cluster-admin developer admin
 oc login -u developer
 
 # expose the internal docker registry so we can push to it.
